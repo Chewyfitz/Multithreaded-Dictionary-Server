@@ -10,6 +10,7 @@ the standard run arguments are
 Client:  
 -  `java -jar ./client.jar`  
 -  `java -jar ./client.jar -cli [hostname] [port]`  
+  
 Server:  
 -  `java -jar ./server.jar [port] [dictionary-file]`  
 
