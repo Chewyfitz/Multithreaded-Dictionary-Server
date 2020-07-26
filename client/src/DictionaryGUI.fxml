@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+  <children>
+      <BorderPane VBox.vgrow="ALWAYS">
+         <center>
+            <TreeView fx:id="definitions" disable="true" editable="true" showRoot="false" BorderPane.alignment="CENTER">
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#addEmptyItem" text="Add" />
+                      <MenuItem mnemonicParsing="false" onAction="#editEntry" text="Edit" />
+                      <MenuItem mnemonicParsing="false" onAction="#deleteEntry" text="Delete" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+            </TreeView>
+         </center>
+         <top>
+            <MenuBar BorderPane.alignment="CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Edit Server" />
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#setEditMode" text="Add Word" />
+                    <MenuItem mnemonicParsing="false" onAction="#editEntry" text="Edit Entry" />
+                    <MenuItem mnemonicParsing="false" onAction="#deleteEntry" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+         <right>
+            <VBox prefHeight="350.0" prefWidth="199.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="wordTitle" disable="true" prefHeight="25.0" />
+                  <TextArea fx:id="editPanel" disable="true" prefHeight="350.0" prefWidth="179.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <HBox>
+                     <children>
+                        <Button fx:id="saveEditButton" disable="true" mnemonicParsing="false" onAction="#saveButtonHandler" text="Save" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="addWordButton" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addButtonHandler" text="Add" />
+                        <Region layoutX="51.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="editWordButton" disable="true" layoutX="51.0" layoutY="10.0" mnemonicParsing="false" onAction="#editEntry" text="Edit" />
+                        <Region layoutX="121.0" layoutY="10.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="deleteWordButton" disable="true" layoutX="89.0" layoutY="10.0" mnemonicParsing="false" onAction="#deleteEntry" text="Delete" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
+      <HBox>
+         <children>
+            <TextField fx:id="queryBox" disable="true" prefHeight="25.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+            <Button fx:id="searchButton" disable="true" mnemonicParsing="false" onAction="#searchButtonClicked" prefHeight="25.0" prefWidth="54.0" text="Search" />
+            <TextField fx:id="serverAddress" maxWidth="131.0" minWidth="131.0" prefHeight="25.0" prefWidth="131.0" promptText="Server Address" />
+            <TextField fx:id="serverPort" alignment="CENTER" maxWidth="40.0" minWidth="40.0" prefHeight="25.0" prefWidth="40.0" promptText="Port" />
+            <Button fx:id="connectButton" mnemonicParsing="false" onAction="#connect" text="Connect" />
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Label text="Status: " />
+            <Label fx:id="status" text="Disconnected" />
+         </children>
+      </HBox>
+  </children>
+</VBox>
